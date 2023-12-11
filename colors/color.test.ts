@@ -1,32 +1,29 @@
+import { Dummy } from "./import.test.ts";
+
 export function test(): void {
-  console.log("hello", 0);
-  return;
+    console.log("hello", 0);
+    return;
 }
 
-			import { Dummy } from "./import.test.ts";
-
 // Comment
-
 export abstract class Test<T> {
-  public foo(arg: T): string {
-    if (typeof arg === "string") {
-      return arg;
+    public foo(arg: T): string {
+        if (typeof arg === "string") {
+            return arg;
+        }
+
+        const tests = [];
+
+        for (const test of tests) {
+            console.log(test);
+        }
+
+        return "";
     }
 
-    const tests = [];
-	 
-    for (const test of tests) {
-	    console.log(test)
+    public static bar(): void {
+        return;
     }
-
-    console.log(arg);
-
-    return "";
-  }
-
-  public static bar(): void {
-    return;
-  }
 }
 
 const dummy = new Dummy();

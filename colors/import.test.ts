@@ -1,9 +1,9 @@
 export class Dummy {
-			  method(): string {
-    return "something";
-  }
+    public method(): string {
+        return "something";
+    }
 
-  bam(): number {
-    return 0;
-  }
+    public bam(): number {
+        return 10;
+    }
 }
