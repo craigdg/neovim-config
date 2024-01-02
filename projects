@@ -1,0 +1,76 @@
+#!/bin/bash
+projects_list="$UTILS_DIR/projects.list"
+lines=("")
+
+if [ ! -f "$projects_list" ]; then
+    touch "$projects_list"
+fi
+
+case "$1" in
+remove)
+	while IFS= read -r line; do
+		if [ "$PWD" != "$line" ]; then
+			lines+=("$line")
+		fi
+	done <"$projects_list"
+
+	echo "${lines[*]}" >"$projects_list"
+	exit 0
+	;;
+add)
+	exists=false
+
+	while IFS= read -r line; do
+		if [ "$PWD" == "$line" ]; then
+			exists=true
+		fi
+	done <"$projects_list"
+
+	if [ "$exists" == false ]; then
+		echo "$PWD" >>"$projects_list"
+	fi
+
+	exit 0
+	;;
+*)
+	index=0
+	found=false
+
+	printf "%s\n\n" "Projects"
+
+	while IFS= read -r line; do
+		index=$((index + 1))
+
+		if [ "$line" != "" ]; then
+			printf "\t%s\n" "$index) $line"
+			found=true
+		fi
+	done <"$projects_list"
+
+	if [ "$found" == false ]; then
+		echo "No projects."
+		exit 0
+	fi
+
+	printf "\n%s: " "Enter the number of the project you want to open"
+	read -r selected_project
+	index=0
+	found=false
+
+	while IFS= read -r line; do
+		index=$((index + 1))
+
+		if [ "$line" != "" ] && [ "$index" -eq "$selected_project" ]; then
+			cd "$line" && nvim
+			found=true
+		fi
+	done <"$projects_list"
+
+	if [ "$found" == false ]; then
+		echo "Invalid project value."
+		exit 0
+	fi
+
+	exit 0
+	;;
+esac
