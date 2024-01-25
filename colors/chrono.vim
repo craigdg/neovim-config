@@ -110,3 +110,9 @@ hi shCommandSub ctermfg=2 cterm=NONE
 hi luaFunction ctermfg=5 cterm=NONE
 hi luaStatement ctermfg=5 cterm=NONE
 hi luaConstant ctermfg=3 cterm=NONE
+hi TabLine ctermfg=15 ctermbg=0 cterm=NONE
+hi TabLineSel ctermfg=15 ctermbg=0 cterm=NONE
+hi TabLineFill ctermfg=15 ctermbg=0 cterm=NONE
+hi BufferDefaultInactiveIndex ctermfg=15 ctermbg=0 cterm=NONE
+hi BufferDefaultInactive ctermfg=15 ctermbg=0 cterm=NONE
+hi BufferDefaultInactiveSign ctermfg=15 ctermbg=0 cterm=NONE
