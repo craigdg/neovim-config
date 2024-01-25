@@ -122,7 +122,7 @@ print() {
 
 		if [ "$line_number" -gt "$file_b_vertical_padding" ] && [ "$line_number" -le "$file_b_end" ]; then
 			file_b_line=$(sed "${file_b_line_number}q;d" "$file_b")
-			file_b_line="$file_b_line_number) $file_b_line"
+            file_b_line="$file_b_line_number) $(basename "$file_b_line")"
 			file_b_horizontal_padding=$(get_horizontal_padding 2 "${#file_b_line}")
 			file_b_whitespace=""
 
@@ -152,7 +152,7 @@ print() {
 }
 
 run() {
-	list="$UTILS_DIR/projects.list"
+	list="$NVIM_DIR/projects.list"
 	lines=("")
 
 	if [ ! -f "$list" ]; then
@@ -195,7 +195,7 @@ run() {
 		fi
 
 		clear
-        print "$UTILS_DIR/art/goofy.txt" "$list"
+        print "$NVIM_DIR/art/goofy.txt" "$list"
 		read -r selected_project
 
         local is_selected_project_number

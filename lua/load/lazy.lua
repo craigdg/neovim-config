@@ -26,7 +26,6 @@ require("lazy").setup({
     "jose-elias-alvarez/null-ls.nvim",
     "folke/trouble.nvim",
     "VonHeikemen/lsp-zero.nvim",
-    "nvim-telescope/telescope.nvim",
     "neovim/nvim-lspconfig",
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
@@ -37,6 +36,7 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     "williamboman/mason.nvim",
     "romgrk/barbar.nvim",
+    "nvim-telescope/telescope.nvim",
 })
 
 vim.g.barbar_auto_setup = false
