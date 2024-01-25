@@ -100,6 +100,7 @@ hi NvimTreeBookmark ctermfg=2 cterm=NONE
 hi NvimTreeGitNew ctermfg=2 cterm=NONE
 hi NvimTreeGitRenamed ctermfg=5 cterm=NONE
 hi NvimTreeGitMerge ctermfg=4 cterm=NONE
+
 hi shFunctionKey ctermfg=5 cterm=NONE
 hi shFunction ctermfg=2 cterm=NONE
 hi shSet ctermfg=5 cterm=NONE
@@ -107,12 +108,29 @@ hi shFunctionTwo ctermfg=2 cterm=NONE
 hi shStatement ctermfg=5 cterm=NONE
 hi shShellVariables ctermfg=15 cterm=NONE
 hi shCommandSub ctermfg=2 cterm=NONE
+
 hi luaFunction ctermfg=5 cterm=NONE
 hi luaStatement ctermfg=5 cterm=NONE
 hi luaConstant ctermfg=3 cterm=NONE
+
 hi TabLine ctermfg=15 ctermbg=0 cterm=NONE
 hi TabLineSel ctermfg=15 ctermbg=0 cterm=NONE
 hi TabLineFill ctermfg=15 ctermbg=0 cterm=NONE
-hi BufferDefaultInactiveIndex ctermfg=15 ctermbg=0 cterm=NONE
-hi BufferDefaultInactive ctermfg=15 ctermbg=0 cterm=NONE
-hi BufferDefaultInactiveSign ctermfg=15 ctermbg=0 cterm=NONE
+
+hi BufferCurrent ctermfg=2 ctermbg=0 cterm=NONE
+hi BufferCurrentIndex ctermfg=2 ctermbg=0 cterm=NONE
+hi BufferCurrentMod ctermfg=5 ctermbg=0 cterm=NONE
+hi BufferCurrentSign ctermfg=2 ctermbg=0 cterm=NONE
+hi BufferCurrentTarget ctermfg=2 ctermbg=0 cterm=NONE
+
+hi BufferInactive ctermfg=7 ctermbg=0 cterm=NONE
+hi BufferInactiveIndex ctermfg=7 ctermbg=0 cterm=NONE
+hi BufferInactiveMod ctermfg=15 ctermbg=0 cterm=NONE
+hi BufferInactiveSign ctermfg=7 ctermbg=0 cterm=NONE
+hi BufferInactiveTarget ctermfg=7 ctermbg=0 cterm=NONE
+
+hi BufferVisible ctermfg=7 ctermbg=0 cterm=NONE
+hi BufferVisibleIndex ctermfg=7 ctermbg=0 cterm=NONE
+hi BufferVisibleMod ctermfg=15 ctermbg=0 cterm=NONE
+hi BufferVisibleSign ctermfg=7 ctermbg=0 cterm=NONE
+hi BufferVisibleTarget ctermfg=7 ctermbg=0 cterm=NONE

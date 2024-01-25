@@ -1,76 +1,228 @@
 #!/bin/bash
-projects_list="$UTILS_DIR/projects.list"
-lines=("")
+green='\033[0;32m'
+purple='\033[0;35m'
+reset='\033[0m'
 
-if [ ! -f "$projects_list" ]; then
-    touch "$projects_list"
-fi
+get_horizontal_padding() {
+	local division
+	local width
+	local length
 
-case "$1" in
-remove)
-	while IFS= read -r line; do
-		if [ "$PWD" != "$line" ]; then
-			lines+=("$line")
+	width=$(tput cols)
+	division=$1
+	length=$2
+
+	normalize_padding_value "$division" "$length" "$width"
+}
+
+get_vertical_padding() {
+	local division
+	local length
+	local height
+
+	height=$(tput lines)
+	division=$1
+	length=$2
+
+	normalize_padding_value "$division" "$length" "$height"
+}
+
+normalize_padding_value() {
+	local calc
+	local division
+	local length
+	local dimension
+
+	division=$1
+	length=$2
+	dimension=$3
+
+	calc=$((((dimension / division) - length) / 2))
+
+	echo "$calc"
+}
+
+find_longest_line_in_file() {
+    awk '{ if (length($0) > max) max = length($0) } END { print max }' "$1"
+}
+
+print() {
+	local file_a
+	local file_b
+	local file_a_line_number
+	local file_b_line_number
+	local file_a_lines_length
+	local file_b_lines_length
+	local file_a_vertical_padding
+	local file_b_vertical_padding
+	local file_a_end
+	local file_b_end
+	local height
+	local width
+
+	height=$(tput lines)
+	width=$(tput cols)
+	file_a=$1
+	file_b=$2
+	file_a_lines_length=$(wc -l <"$file_a")
+	file_b_lines_length=$(wc -l <"$file_b")
+	file_a_vertical_padding=$(get_vertical_padding 1 "$file_a_lines_length")
+	file_b_vertical_padding=$(get_vertical_padding 1 "$file_b_lines_length")
+	file_a_end=$((file_a_vertical_padding + file_a_lines_length))
+	file_b_end=$((file_b_vertical_padding + file_b_lines_length))
+	file_a_line_number=1
+	file_b_line_number=1
+
+	for ((line_number = 1; line_number <= height; line_number++)); do
+		local file_a_horizontal_padding
+		local file_b_horizontal_padding
+		local file_a_whitespace
+		local file_b_whitespace
+		local file_a_line
+		local file_b_line
+
+		file_a_line=""
+		file_b_line=""
+        difference=0
+
+		if [ "$line_number" -ge "$file_a_vertical_padding" ] && [ "$line_number" -le "$file_a_end" ]; then
+			file_a_line=$(sed "${file_a_line_number}q;d" "$file_a")
+			file_a_line_length="${#file_a_line}"
+            file_a_longest_line=$(find_longest_line_in_file "$file_a")
+            file_a_horizontal_padding=$(get_horizontal_padding 2 "$file_a_longest_line")
+			file_a_whitespace=""
+			file_a_difference_whitespace=""
+
+            target=$((file_a_horizontal_padding + file_a_longest_line)) 
+            actual=$((file_a_horizontal_padding + file_a_line_length))
+            difference=$((target - actual))
+
+			for ((i = 0; i < file_a_horizontal_padding; i++)); do
+				file_a_whitespace="$file_a_whitespace "
+			done
+
+			for ((i = 0; i < difference; i++)); do
+                file_a_difference_whitespace="$file_a_difference_whitespace "
+			done
+
+            file_a_line="${file_a_line}${file_a_difference_whitespace}"
+			file_a_line_number=$((file_a_line_number + 1))
 		fi
-	done <"$projects_list"
 
-	echo "${lines[*]}" >"$projects_list"
-	exit 0
-	;;
-add)
-	exists=false
+		if [ "$line_number" -eq "$((file_b_vertical_padding - 1))" ]; then
+			file_b_line="Enter the number of the project to open:"
+			file_b_horizontal_padding=$(get_horizontal_padding 2 "${#file_b_line}")
+			file_b_line="${purple}Enter the number of the project to open:${reset}"
+			file_b_whitespace=""
 
-	while IFS= read -r line; do
-		if [ "$PWD" == "$line" ]; then
-			exists=true
+			for ((i = 0; i < file_b_horizontal_padding; i++)); do
+				    file_b_whitespace="$file_b_whitespace "
+			done
 		fi
-	done <"$projects_list"
 
-	if [ "$exists" == false ]; then
-		echo "$PWD" >>"$projects_list"
+		if [ "$line_number" -gt "$file_b_vertical_padding" ] && [ "$line_number" -le "$file_b_end" ]; then
+			file_b_line=$(sed "${file_b_line_number}q;d" "$file_b")
+			file_b_line="$file_b_line_number) $file_b_line"
+			file_b_horizontal_padding=$(get_horizontal_padding 2 "${#file_b_line}")
+			file_b_whitespace=""
+
+			for ((i = 0; i < file_b_horizontal_padding; i++)); do
+				file_b_whitespace="$file_b_whitespace "
+			done
+
+			file_b_line_number=$((file_b_line_number + 1))
+		fi
+
+		if [ -n "$file_a_line" ] && [ -z "$file_b_line" ]; then
+			printf "${file_a_whitespace}${green}%s${reset}${file_a_whitespace}\n" "$file_a_line"
+		fi
+
+		if [ -z "$file_a_line" ] && [ -z "$file_b_line" ]; then
+			printf "%b\n" ""
+		fi
+
+		if [ -z "$file_a_line" ] && [ -n "$file_b_line" ]; then
+			printf "${file_b_whitespace}%b${file_b_whitespace}\n" "$file_b_line"
+		fi
+
+		if [ -n "$file_a_line" ] && [ -n "$file_b_line" ]; then
+			printf "${file_a_whitespace}${green}%s${reset}${file_a_whitespace}${file_b_whitespace}%b${file_b_whitespace}\n" "$file_a_line" "$file_b_line"
+		fi
+	done
+}
+
+run() {
+	list="$UTILS_DIR/projects.list"
+	lines=("")
+
+	if [ ! -f "$list" ]; then
+		touch "$list"
 	fi
 
-	exit 0
-	;;
-*)
-	index=0
-	found=false
+	case "$1" in
+	remove)
+		while IFS= read -r line; do
+			if [ "$PWD" != "$line" ]; then
+				lines+=("$line")
+			fi
+		done <"$list"
 
-	printf "%s\n\n" "Projects"
-
-	while IFS= read -r line; do
-		index=$((index + 1))
-
-		if [ "$line" != "" ]; then
-			printf "\t%s\n" "$index) $line"
-			found=true
-		fi
-	done <"$projects_list"
-
-	if [ "$found" == false ]; then
-		echo "No projects."
+		echo "${lines[*]}" >"$list"
 		exit 0
-	fi
+		;;
+	add)
+		exists=false
 
-	printf "\n%s: " "Enter the number of the project you want to open"
-	read -r selected_project
-	index=0
-	found=false
+		while IFS= read -r line; do
+			if [ "$PWD" == "$line" ]; then
+				exists=true
+			fi
+		done <"$list"
 
-	while IFS= read -r line; do
-		index=$((index + 1))
-
-		if [ "$line" != "" ] && [ "$index" -eq "$selected_project" ]; then
-			cd "$line" && nvim
-			found=true
+		if [ "$exists" == false ]; then
+			echo "$PWD" >>"$list"
 		fi
-	done <"$projects_list"
 
-	if [ "$found" == false ]; then
-		echo "Invalid project value."
 		exit 0
-	fi
+		;;
+	*)
+		index=0
+		found=false
 
-	exit 0
-	;;
-esac
+		if [ -z "$(cat "$list")" ]; then
+			echo "No projects."
+			exit 0
+		fi
+
+		clear
+        print "$UTILS_DIR/art/goofy.txt" "$list"
+		read -r selected_project
+
+        local is_selected_project_number
+        is_selected_project_number='^[0-9]+$'
+        
+        if ! [[ $selected_project =~ $is_selected_project_number ]] ; then
+			echo "invalid project value."
+			exit 1
+        fi
+
+		while IFS= read -r line; do
+			index=$((index + 1))
+
+			if [ "$line" != "" ] && [ "$index" -eq "$selected_project" ]; then
+                nvim "$line"
+				found=true
+			fi
+		done <"$list"
+
+		if [ "$found" == false ]; then
+			echo "invalid project value."
+			exit 1
+		fi
+
+		exit 0
+		;;
+	esac
+}
+
+run "$@"

@@ -16,15 +16,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    'nvim-tree/nvim-web-devicons',
+    "lewis6991/gitsigns.nvim",
+    'nvim-lua/plenary.nvim',
     "kdheepak/lazygit.nvim",
+    "nvim-tree/nvim-tree.lua",
     "itspriddle/vim-shellcheck",
     "z0mbix/vim-shfmt",
-    'nvim-tree/nvim-web-devicons',
-    "nvim-tree/nvim-tree.lua",
     "jose-elias-alvarez/null-ls.nvim",
     "folke/trouble.nvim",
     "VonHeikemen/lsp-zero.nvim",
-    'nvim-lua/plenary.nvim',
     "nvim-telescope/telescope.nvim",
     "neovim/nvim-lspconfig",
     "hrsh7th/nvim-cmp",
@@ -35,4 +36,15 @@ require("lazy").setup({
     "L3MON4D3/LuaSnip",
     "williamboman/mason-lspconfig.nvim",
     "williamboman/mason.nvim",
+    "romgrk/barbar.nvim",
 })
+
+vim.g.barbar_auto_setup = false
+
+require 'barbar'.setup {
+    maximum_padding = 10,
+    minimum_padding = 10,
+    highlight_inactive_file_icons = true,
+    exclude_name = { '' },
+    exclude_ft = { '' }
+}

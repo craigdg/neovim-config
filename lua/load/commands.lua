@@ -90,7 +90,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.ts", "*.tsx", "*.lua", "*.toml", "*.go", "*.json" },
+    pattern = { "*.ts", "*.tsx", "*.js", "*.cjs", "*.lua", "*.toml", "*.go", "*.json" },
     command = "LspZeroFormat"
 })
 
@@ -123,14 +123,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end, 0)
     end
 })
-
-vim.api.nvim_create_user_command(
-    'HighlightGroup',
-    function()
-        vim.api.nvim_exec([[echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')]], true)
-    end,
-    { nargs = 0 }
-)
 
 vim.api.nvim_create_user_command(
     'FilesClose',
