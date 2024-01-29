@@ -1,4 +1,4 @@
-vim.cmd 'colorscheme chrono'
+vim.cmd 'colorscheme megacityone'
 
 require("load.lazy")
 require("load.options")

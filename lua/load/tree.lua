@@ -2,7 +2,7 @@ local tree = require("nvim-tree")
 
 tree.setup({
     view = {
-        width = 40,
+        width = 50,
     },
     filters = {
         dotfiles = false,

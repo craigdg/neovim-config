@@ -12,7 +12,7 @@ hi Include ctermfg=6 ctermbg=NONE cterm=NONE
 hi TabLineSel ctermfg=0 ctermbg=2 cterm=NONE
 hi TabLine ctermfg=0 ctermbg=2 cterm=NONE
 hi TabLineFill ctermfg=0 ctermbg=2 cterm=NONE
-hi StatusLineNC ctermfg=15 ctermbg=5 cterm=NONE
+hi StatusLineNC ctermfg=0 ctermbg=5 cterm=NONE
 hi NonText ctermfg=0 ctermbg=NONE cterm=NONE
 hi DiffText ctermfg=NONE ctermbg=1 cterm=NONE
 hi ErrorMsg ctermfg=1 ctermbg=NONE cterm=NONE

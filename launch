@@ -195,7 +195,7 @@ run() {
 		fi
 
 		clear
-        print "$NVIM_DIR/art/goofy.txt" "$list"
+        print "$NVIM_DIR/ascii/launcher.txt" "$list"
 		read -r selected_project
 
         local is_selected_project_number
@@ -210,7 +210,8 @@ run() {
 			index=$((index + 1))
 
 			if [ "$line" != "" ] && [ "$index" -eq "$selected_project" ]; then
-                nvim "$line"
+                cd "$line" || exit
+                nvim  
 				found=true
 			fi
 		done <"$list"
