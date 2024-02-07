@@ -1,20 +1,17 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system(
-        {
-            "git",
-            "clone",
-            "--filter=blob:none",
-            "https://github.com/folke/lazy.nvim.git",
-            "--branctable",
-            lazypath
-        }
-    )
-end
+vim.fn.system(
+    {
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath
+    }
+)
 
 vim.opt.rtp:prepend(lazypath)
-
 
 require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
@@ -68,6 +65,7 @@ require("lazy").setup({
                 formatting = lsp_zero.cmp_format(),
                 mapping = cmp.mapping.preset.insert({
                     ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<Tab>'] = cmp.mapping.confirm({ select = false }),
                     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-d>'] = cmp.mapping.scroll_docs(4),
                     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
@@ -130,7 +128,12 @@ require("lazy").setup({
             require('lspconfig').lua_ls.setup(lua_opts)
         end
     },
-    "ose-elias-alvarez/null-ls.nvim",
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim"
+        }
+    },
     "MunifTanjim/prettier.nvim",
     {
         'nvim-telescope/telescope.nvim',
@@ -152,9 +155,4 @@ require("lazy").setup({
             exclude_ft = { '' }
         },
     },
-    'rmagatti/auto-session'
 })
-
-require("auto-session").setup {
-    log_level = "error",
-}

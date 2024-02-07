@@ -2,13 +2,25 @@ local tree = require("nvim-tree")
 
 tree.setup({
     view = {
-        width = 50,
+        width = 45,
     },
     filters = {
-        dotfiles = false,
-        custom = { '.DS_Store', '.git' },
+        custom = { '.DS_Store' },
     },
     update_focused_file = {
         enable = true,
+    },
+    git = {
+        enable = true,
+        ignore = false,
+        timeout = 500,
+    },
+    renderer = {
+        highlight_git = true,
+        icons = {
+            show = {
+                git = true,
+            },
+        },
     },
 })

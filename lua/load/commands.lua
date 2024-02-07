@@ -2,7 +2,7 @@ local plain_file = os.getenv("PLAIN_FILE")
 
 local config = {
     terminal = {
-        height = 10
+        height = 15
     }
 }
 

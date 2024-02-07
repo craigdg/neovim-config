@@ -152,7 +152,7 @@ print() {
 }
 
 run() {
-	list="$NVIM_DIR/projects.list"
+	list="$NVIM_DIR/launch.list"
 	lines=("")
 
 	if [ ! -f "$list" ]; then
@@ -211,12 +211,14 @@ run() {
 
 			if [ "$line" != "" ] && [ "$index" -eq "$selected_project" ]; then
                 cd "$line" || exit
-                nvim  
 				found=true
 			fi
 		done <"$list"
 
-		if [ "$found" == false ]; then
+		if [ "$found" == true ]; then
+            export SHELL_SESSIONS_DISABLE=1
+            nvim
+        else
 			echo "invalid project value."
 			exit 1
 		fi

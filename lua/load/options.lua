@@ -9,3 +9,5 @@ vim.opt.expandtab = true
 vim.opt.wrap = false
 vim.g.netrw_winsize = 30
 vim.g.netrw_banner = 0
+
+vim.api.nvim_set_var('shell', '/bin/zsh')
