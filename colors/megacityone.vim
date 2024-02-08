@@ -35,7 +35,6 @@ hi PMenu ctermfg=15 ctermbg=0 cterm=NONE
 hi Search ctermfg=0 ctermbg=7 cterm=NONE
 hi Delimiter ctermfg=15 ctermbg=NONE cterm=NONE
 hi Statement ctermfg=2 ctermbg=NONE cterm=NONE
-hi SpellRare ctermfg=1 ctermbg=1 cterm=underline cterm=NONE
 hi Comment ctermfg=7 ctermbg=NONE cterm=NONE
 hi Character ctermfg=15 ctermbg=NONE cterm=NONE
 hi Float ctermfg=3 ctermbg=NONE cterm=NONE
@@ -55,26 +54,28 @@ hi FoldColumn ctermfg=0 ctermbg=7 cterm=NONE
 hi PreProc ctermfg=5 ctermbg=NONE cterm=NONE
 hi Visual ctermfg=0 ctermbg=15 cterm=NONE
 hi MoreMsg ctermfg=15 ctermbg=NONE cterm=NONE
-hi SpellCap ctermfg=0 ctermbg=15 cterm=underline cterm=NONE
 hi VertSplit ctermfg=8 ctermbg=0 cterm=NONE
 hi Exception ctermfg=1 ctermbg=NONE cterm=NONE
 hi Keyword ctermfg=5 ctermbg=NONE cterm=NONE
 hi Type ctermfg=5 ctermbg=NONE cterm=NONE
 hi DiffChange ctermfg=NONE ctermbg=1 cterm=NONE
-hi SpellLocal ctermfg=1 ctermbg=1 cterm=underline cterm=NONE
 hi Error ctermfg=15 ctermbg=1 cterm=NONE
 hi Constant ctermfg=1 ctermbg=NONE cterm=NONE
 hi Tag ctermfg=1 ctermbg=NONE cterm=NONE
 hi String ctermfg=3 ctermbg=NONE cterm=NONE
 hi MatchParen ctermfg=5 ctermbg=NONE cterm=NONE
 hi Repeat ctermfg=5 ctermbg=NONE cterm=NONE
-hi SpellBad ctermfg=1 ctermbg=1 cterm=underline cterm=NONE
 hi Directory ctermfg=7 ctermbg=NONE cterm=NONE
 hi Structure ctermfg=6 ctermbg=NONE cterm=NONE
 hi Macro ctermbg=NONE cterm=NONE
 hi Underlined ctermfg=1 ctermbg=1 cterm=underline cterm=NONE
 hi DiffAdd ctermfg=NONE ctermbg=1 cterm=NONE
 hi cursorim ctermfg=1 ctermbg=1 cterm=NONE
+
+hi SpellBad ctermfg=1 ctermbg=0 cterm=underline cterm=NONE
+hi SpellLocal ctermfg=1 ctermbg=0 cterm=underline cterm=NONE
+hi SpellCap ctermfg=1 ctermbg=0 cterm=underline cterm=NONE
+hi SpellRare ctermfg=1 ctermbg=0 cterm=underline cterm=NONE
 
 hi typescriptExport ctermfg=5 cterm=NONE
 hi typescriptStatementKeyword ctermfg=5 cterm=NONE
@@ -86,9 +87,6 @@ hi typescriptOperator ctermfg=5 cterm=NONE
 hi typescriptVariable ctermfg=5 cterm=NONE
 hi typescriptBlock ctermfg=15 cterm=NONE
 
-hi NvimTreeGitStaged ctermfg=2 cterm=NONE
-hi NvimTreeGitDeleted ctermfg=1 cterm=NONE
-hi NvimTreeGitDirty ctermfg=1 cterm=NONE
 hi NvimTreeModifiedFile ctermfg=7 cterm=NONE
 hi NvimTreeOpenedFile ctermfg=2 cterm=NONE
 hi NvimTreeImageFile ctermfg=5 cterm=NONE
@@ -99,9 +97,16 @@ hi NvimTreeFolderIcon ctermfg=7 cterm=NONE
 hi NvimTreeSymlink ctermfg=6 cterm=NONE
 hi NvimTreeIndentMarker ctermfg=5 cterm=NONE
 hi NvimTreeBookmark ctermfg=2 cterm=NONE
+
 hi NvimTreeGitNew ctermfg=2 cterm=NONE
+hi NvimTreeGitDirty ctermfg=5 cterm=NONE
 hi NvimTreeGitRenamed ctermfg=5 cterm=NONE
 hi NvimTreeGitMerge ctermfg=4 cterm=NONE
+hi NvimTreeGitStaged ctermfg=2 cterm=NONE
+hi NvimTreeGitDeleted ctermfg=1 cterm=NONE
+
+hi NvimTreeCopiedHL ctermfg=0 ctermbg=7 cterm=NONE
+hi NvimTreeCutHL ctermfg=0 ctermbg=7 cterm=NONE
 
 hi shFunctionKey ctermfg=5 cterm=NONE
 hi shFunction ctermfg=2 cterm=NONE
