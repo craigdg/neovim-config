@@ -196,7 +196,12 @@ run() {
 
 		clear
         print "$NVIM_DIR/ascii/launcher.txt" "$list"
-		read -r selected_project
+
+        if [ -z "$1" ]; then
+     		read -r selected_project
+        else
+            selected_project=$1
+        fi
 
         local is_selected_project_number
         is_selected_project_number='^[0-9]+$'
