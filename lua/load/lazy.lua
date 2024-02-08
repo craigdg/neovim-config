@@ -49,6 +49,12 @@ require("lazy").setup({
         end,
     },
     {
+        "karb94/neoscroll.nvim",
+        config = function()
+            require('neoscroll').setup {}
+        end
+    },
+    {
         'williamboman/mason.nvim',
         lazy = false,
         config = true,
@@ -161,3 +167,5 @@ require("lazy").setup({
         },
     },
 })
+
+require('neoscroll').setup()
