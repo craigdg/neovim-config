@@ -341,8 +341,6 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
     'TerminalShow',
     function()
-        local current_buf = vim.fn.bufnr('%')
-
         vim.cmd("wincmd l")
 
         if not hasTerminal() then
