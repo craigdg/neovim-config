@@ -75,6 +75,7 @@ hi Macro ctermbg=NONE cterm=NONE
 hi Underlined ctermfg=1 ctermbg=1 cterm=underline cterm=NONE
 hi DiffAdd ctermfg=NONE ctermbg=1 cterm=NONE
 hi cursorim ctermfg=1 ctermbg=1 cterm=NONE
+
 hi typescriptExport ctermfg=5 cterm=NONE
 hi typescriptStatementKeyword ctermfg=5 cterm=NONE
 hi typescriptBraces ctermfg=15 cterm=NONE
@@ -84,6 +85,7 @@ hi typescriptTypeParameter ctermfg=6 cterm=NONE
 hi typescriptOperator ctermfg=5 cterm=NONE
 hi typescriptVariable ctermfg=5 cterm=NONE
 hi typescriptBlock ctermfg=15 cterm=NONE
+
 hi NvimTreeGitStaged ctermfg=2 cterm=NONE
 hi NvimTreeGitDeleted ctermfg=1 cterm=NONE
 hi NvimTreeGitDirty ctermfg=1 cterm=NONE

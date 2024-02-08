@@ -16,12 +16,17 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
     "itspriddle/vim-shellcheck",
+    'nvim-treesitter/nvim-treesitter',
     "z0mbix/vim-shfmt",
     {
         "kdheepak/lazygit.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
     {
         "folke/trouble.nvim",

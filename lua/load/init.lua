@@ -1,6 +1,5 @@
-vim.cmd 'colorscheme megacityone'
-
 require("load.lazy")
+require("load.lualine")
 require("load.options")
 require("load.tree")
 require("load.lsp")
