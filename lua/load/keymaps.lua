@@ -30,8 +30,7 @@ end)
 
 vim.keymap.set('n', '<Leader>p', builtin.find_files, {})
 vim.keymap.set('n', '<Leader>f', builtin.live_grep, {})
-vim.keymap.set('n', '<Leader>b', builtin.buffers, {})
-vim.keymap.set('n', '<Leader>h', builtin.help_tags, {})
+vim.keymap.set('n', '<Leader>s', builtin.grep_string, {})
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {
     noremap = true,
     silent = true
