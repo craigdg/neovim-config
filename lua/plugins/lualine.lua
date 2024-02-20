@@ -1,3 +1,5 @@
+local lualine = require('lualine')
+
 local colors = {
     black        = '#121212',
     white        = '#FFFFFF',
@@ -12,7 +14,7 @@ local colors = {
     inactivegray = '#777989',
 }
 
-return require('lualine').setup {
+return lualine.setup {
     options = {
         theme = {
             inactive = {

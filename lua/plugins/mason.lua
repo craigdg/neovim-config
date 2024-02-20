@@ -1,11 +1,11 @@
 local mason = require("mason")
-local masonLspconfig = require("mason-lspconfig")
+local mason_lsp_config = require("mason-lspconfig")
 local lsp_zero = require('lsp-zero')
 local languages = { 'tsserver', 'eslint', 'lua_ls', 'bashls', 'gopls', 'taplo', 'jsonls', 'yamlls' }
 
 mason.setup(languages)
 
-masonLspconfig.setup({
+mason_lsp_config.setup({
     ensure_installed = languages,
     handlers = {
         lsp_zero.default_setup,

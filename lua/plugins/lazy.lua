@@ -1,19 +1,6 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazy = require("lazy")
 
-vim.fn.system(
-    {
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable",
-        lazypath
-    }
-)
-
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup({
+lazy.setup({
     "nvim-tree/nvim-tree.lua",
     "itspriddle/vim-shellcheck",
     'nvim-treesitter/nvim-treesitter',
@@ -47,12 +34,6 @@ require("lazy").setup({
             vim.g.lsp_zero_extend_cmp = 0
             vim.g.lsp_zero_extend_lspconfig = 0
         end,
-    },
-    {
-        "karb94/neoscroll.nvim",
-        config = function()
-            require('neoscroll').setup {}
-        end
     },
     {
         'williamboman/mason.nvim',
@@ -167,5 +148,3 @@ require("lazy").setup({
         },
     },
 })
-
-require('neoscroll').setup()

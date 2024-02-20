@@ -1,3 +1,3 @@
 vim.cmd 'colorscheme megacityone'
 
-require("load")
+require("init")

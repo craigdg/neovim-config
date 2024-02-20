@@ -152,8 +152,17 @@ print() {
 }
 
 run() {
-	list="$NVIM_DIR/launch.list"
+    local data_dir
+    local list
+    local lines
+
+    data_dir="$NVIM_DIR/data"
+	list="$data_dir/launch.list"
 	lines=("")
+
+    if [ ! "$data_dir" ]; then
+        mkdir -r "$data_dir"
+    fi
 
 	if [ ! -f "$list" ]; then
 		touch "$list"
@@ -171,6 +180,8 @@ run() {
 		exit 0
 		;;
 	add)
+        local exists
+
 		exists=false
 
 		while IFS= read -r line; do
@@ -186,6 +197,10 @@ run() {
 		exit 0
 		;;
 	*)
+        local index
+        local found
+        local is_selected_project_number
+
 		index=0
 		found=false
 
@@ -203,7 +218,6 @@ run() {
             selected_project=$1
         fi
 
-        local is_selected_project_number
         is_selected_project_number='^[0-9]+$'
         
         if ! [[ $selected_project =~ $is_selected_project_number ]] ; then

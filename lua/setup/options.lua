@@ -1,3 +1,7 @@
+vim.g.netrw_winsize = 30
+vim.g.netrw_banner = 0
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = false
@@ -7,7 +11,5 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.wrap = false
-vim.g.netrw_winsize = 30
-vim.g.netrw_banner = 0
 
-vim.api.nvim_set_var('shell', '/bin/zsh')
+vim.api.nvim_set_option('scrolloff', 9999)
