@@ -235,7 +235,6 @@ run() {
 		done <"$list"
 
 		if [ "$found" == true ]; then
-            export SHELL_SESSIONS_DISABLE=1
             nvim
         else
 			echo "invalid project value."

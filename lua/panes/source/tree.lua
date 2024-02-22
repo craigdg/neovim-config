@@ -30,8 +30,6 @@ end
 
 local function create()
     vim.cmd("NvimTreeOpen")
-    vim.wo.number = true
-    vim.wo.relativenumber = true
 end
 
 local function hide()
