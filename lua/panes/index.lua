@@ -4,6 +4,7 @@ local terminal = require('panes.source.terminal')
 local root = require('panes.source.root')
 local empty = require('panes.source.empty')
 local tree = require('panes.source.tree')
+local lazygit = require('panes.source.lazygit')
 
 return {
     file = file,
@@ -11,5 +12,6 @@ return {
     terminal = terminal,
     root = root,
     empty = empty,
-    tree = tree
+    tree = tree,
+    lazygit = lazygit
 }

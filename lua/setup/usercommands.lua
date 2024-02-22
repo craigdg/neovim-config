@@ -11,13 +11,14 @@ vim.api.nvim_create_user_command(
 
             vim.cmd("wincmd l")
 
-            if not panes.terminal.has() then
-                vim.cmd("split")
-                vim.cmd("wincmd j")
-                panes.terminal.create()
-            end
-
+            vim.cmd("split")
+            vim.cmd("wincmd j")
+            panes.terminal.create()
             panes.terminal.resize()
+
+            vim.cmd("split")
+            vim.cmd("wincmd j")
+            panes.lazygit.create()
             panes.tree.focus()
         end
     end,

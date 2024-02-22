@@ -2,7 +2,7 @@ local nvimtree = require("nvim-tree")
 
 nvimtree.setup({
     view = {
-        width = 45,
+        width = 50,
     },
     filters = {
         custom = { '.DS_Store' },

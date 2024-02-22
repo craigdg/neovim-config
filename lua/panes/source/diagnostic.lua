@@ -10,7 +10,7 @@ end
 
 local function has()
     for _, buf in pairs(utils.buffer.getVisibleWindows()) do
-        if utils.buffer.isDiagnostic(buf) then
+        if is(buf) then
             return true
         end
     end
