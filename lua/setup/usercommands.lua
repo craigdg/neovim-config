@@ -8,19 +8,24 @@ vim.api.nvim_create_user_command(
     function()
         if not plain_file then
             panes.tree.create()
-
             vim.cmd("wincmd l")
-
             vim.cmd("split")
             vim.cmd("wincmd j")
             panes.terminal.create()
             panes.terminal.resize()
-
-            vim.cmd("split")
-            vim.cmd("wincmd j")
-            panes.lazygit.create()
             panes.tree.focus()
         end
+    end,
+    { nargs = 0 }
+)
+
+vim.api.nvim_create_user_command(
+    'LazyGit',
+    function()
+        panes.file.focus()
+        panes.terminal.hide()
+        panes.tree.hide()
+        panes.lazygit.create()
     end,
     { nargs = 0 }
 )

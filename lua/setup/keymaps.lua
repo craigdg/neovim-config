@@ -6,6 +6,12 @@ end, {
     noremap = true
 })
 
+vim.keymap.set("n", "<Leader>g", function()
+    vim.cmd('LazyGit')
+end, {
+    noremap = true
+})
+
 vim.keymap.set("n", "<Leader>;", function()
     vim.cmd('FocusTerminal')
 end, {

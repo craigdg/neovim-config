@@ -1,4 +1,5 @@
 local panes = require("panes.index")
+local utils = require("utils.index")
 
 vim.api.nvim_create_autocmd("VimEnter", {
     pattern = "*",

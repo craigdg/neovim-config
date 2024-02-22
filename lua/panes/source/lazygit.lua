@@ -15,7 +15,10 @@ local function create()
     vim.cmd("setlocal wrap")
     vim.cmd("terminal")
     vim.cmd("resize " .. memory.state.terminal.height)
-    vim.api.nvim_chan_send(vim.api.nvim_get_current_chan(), "lazygit" .. "\n")
+    vim.cmd("file lazygit")
+    vim.cmd("resize 100")
+    vim.api.nvim_chan_send(vim.bo.channel, "lazygit && exit\r")
+    vim.api.nvim_command('startinsert!')
 end
 
 local function resize()

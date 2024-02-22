@@ -34,9 +34,14 @@ local function create()
     vim.wo.relativenumber = true
 end
 
+local function hide()
+    vim.cmd("NvimTreeClose")
+end
+
 return {
     is = is,
     has = has,
     focus = focus,
-    create = create
+    create = create,
+    hide = hide
 }

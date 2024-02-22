@@ -14,6 +14,7 @@ local function create()
     vim.wo.relativenumber = false
     vim.cmd("setlocal wrap")
     vim.cmd("terminal")
+    vim.api.nvim_chan_send(vim.bo.channel, "clear\r")
     vim.cmd("resize " .. memory.state.terminal.height)
 end
 
