@@ -6,52 +6,92 @@ end, {
     noremap = true
 })
 
-vim.keymap.set("n", "<Leader>g", function()
-    vim.cmd('LazyGit')
-end, {
-    noremap = true
-})
-
 vim.keymap.set("n", "<Leader>;", function()
     vim.cmd('FocusTerminal')
 end, {
     noremap = true
 })
 
-vim.keymap.set('n', '<Leader>#', function()
+vim.keymap.set("n", "<Leader>g", function()
+    vim.cmd('LazyGit')
+end, {
+    noremap = true
+})
+
+vim.keymap.set("n", "<Leader>b", function()
+    vim.cmd('Btop')
+end, {
+    noremap = true
+})
+
+vim.keymap.set('t', '<Leader>\'', function()
     vim.cmd "TerminalNew"
 end, {
     noremap = true
 })
 
-vim.keymap.set("n", "<Leader>\'", function()
-    vim.cmd "TerminalToggleSizing"
+vim.keymap.set('n', '<Leader>\'', function()
+    vim.cmd "TerminalNew"
+end, {
+    noremap = true
+})
+
+vim.keymap.set('t', '<Leader>/', function()
+    vim.cmd "ToggleTerm"
 end, {
     noremap = true
 })
 
 vim.keymap.set('n', '<Leader>/', function()
-    vim.cmd "TerminalToggle"
+    vim.cmd "ToggleTerm"
+end, {
+    noremap = true
+})
+
+vim.keymap.set('t', '<Leader>#', function()
+    vim.cmd "TermSelect"
+end, {
+    noremap = true
+})
+
+vim.keymap.set('n', '<Leader>#', function()
+    vim.cmd "TermSelect"
 end, {
     noremap = true
 })
 
 vim.keymap.set("n", "<Leader>d", function()
     vim.cmd "DiagnosticsToggle"
-    vim.cmd("setlocal wrap")
 end, {
     noremap = true
 })
 
 vim.keymap.set("n", "<Leader>D", function()
     vim.cmd "DiagnosticsWorkspaceToggle"
-    vim.cmd("setlocal wrap")
+end, {
+    noremap = true
+})
+
+vim.keymap.set("n", "<Leader>E", function()
+    vim.cmd "NvimTreeToggle"
 end, {
     noremap = true
 })
 
 vim.keymap.set("n", "<Leader>e", function()
+    vim.cmd "NvimTreeFocus"
+end, {
+    noremap = true
+})
+
+vim.keymap.set("t", "<Leader>E", function()
     vim.cmd "NvimTreeToggle"
+end, {
+    noremap = true
+})
+
+vim.keymap.set("t", "<Leader>e", function()
+    vim.cmd "NvimTreeFocus"
 end, {
     noremap = true
 })

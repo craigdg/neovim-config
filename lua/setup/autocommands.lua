@@ -1,5 +1,4 @@
 local panes = require("panes.index")
-local utils = require("utils.index")
 
 vim.api.nvim_create_autocmd("VimEnter", {
     pattern = "*",
@@ -12,7 +11,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.yaml", "*.yml" },
+    pattern = { "*.yaml", "*.yml", "*.graphql", "*.gql", "*.graphqls" },
     command = "Prettier"
 })
 
@@ -27,6 +26,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.defer_fn(function()
             panes.file.ensure()
             panes.terminal.resize()
+
+            if panes.terminal.is(vim.fn.expand('%')) then
+                vim.cmd('startinsert')
+            end
         end, 0)
     end
 })

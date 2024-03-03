@@ -65,6 +65,7 @@ local function ensure()
         end
     end
 end
+
 return {
     is = is,
     has = has,

@@ -18,7 +18,27 @@ local function has()
     return false
 end
 
+local function toggle()
+    if has() then
+        vim.cmd "TroubleClose"
+    else
+        vim.cmd "Trouble document_diagnostics"
+        vim.cmd("setlocal wrap")
+    end
+end
+
+local function toggleWithWorkspace()
+    if has() then
+        vim.cmd "TroubleClose"
+    else
+        vim.cmd "Trouble"
+        vim.cmd("setlocal wrap")
+    end
+end
+
 return {
     is = is,
+    toggle = toggle,
+    toggleWithWorkspace = toggleWithWorkspace,
     has = has
 }

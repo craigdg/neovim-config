@@ -5,6 +5,7 @@ local root = require('panes.source.root')
 local empty = require('panes.source.empty')
 local tree = require('panes.source.tree')
 local lazygit = require('panes.source.lazygit')
+local btop = require('panes.source.btop')
 
 return {
     file = file,
@@ -13,5 +14,6 @@ return {
     root = root,
     empty = empty,
     tree = tree,
-    lazygit = lazygit
+    lazygit = lazygit,
+    btop = btop
 }

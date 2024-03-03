@@ -1,3 +1,18 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
+end
+
+vim.opt.rtp:prepend(lazypath)
+
 local lazy = require("lazy")
 
 lazy.setup({
@@ -69,26 +84,29 @@ lazy.setup({
             { 'williamboman/mason-lspconfig.nvim' },
         },
         config = function()
-            -- This is where all the LSP shenanigans will live
+            local languages = { 'tsserver', 'eslint', 'lua_ls', 'bashls', 'gopls', 'taplo', 'jsonls', 'yamlls', 'graphql' }
             local lsp_zero = require('lsp-zero')
-            lsp_zero.extend_lspconfig()
+            local mason = require("mason")
 
-            --- if you want to know more about lsp-zero and mason.nvim
-            --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
-            lsp_zero.on_attach(function(client, bufnr)
-                -- see :help lsp-zero-keybindings
-                -- to learn the available actions
+            lsp_zero.extend_lspconfig()
+            lsp_zero.on_attach(function(_, bufnr)
                 lsp_zero.default_keymaps({ buffer = bufnr })
             end)
 
+            mason.setup(languages)
+
+            local lspconfig = require("lspconfig")
+
+            lspconfig.graphql.setup()
+
             require('mason-lspconfig').setup({
-                ensure_installed = {},
+                ensure_installed = languages,
                 handlers = {
                     lsp_zero.default_setup,
                     lua_ls = function()
-                        -- (Optional) Configure lua language server for neovim
-                        local lua_opts = lsp_zero.nvim_lua_ls()
-                        require('lspconfig').lua_ls.setup(lua_opts)
+                        require('lspconfig').lua_ls.setup({
+                            settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
+                        })
                     end,
                 }
             })
@@ -141,4 +159,5 @@ lazy.setup({
             exclude_ft = { '' }
         },
     },
+    { 'akinsho/toggleterm.nvim', version = "*", config = true }
 })
