@@ -23,6 +23,16 @@ local function has()
     return false
 end
 
+local function hasHidden()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if is(buf) then
+            return true
+        end
+    end
+
+    return false
+end
+
 local function focus()
     for _, buf in pairs(utils.buffer.getVisibleWindows()) do
         if is(buf) or empty.is(buf) then
@@ -32,43 +42,9 @@ local function focus()
     end
 end
 
-local function ensure()
-    if not has() and not empty.has() then
-        if terminal.has() then
-            local has_tree = terminal.has()
-
-            if has_tree then
-                vim.cmd("NvimTreeClose")
-            end
-
-            vim.o.splitbelow = false
-            terminal.focus()
-            vim.cmd("split | wincmd K")
-
-            if has_tree then
-                vim.cmd("NvimTreeOpen")
-                vim.cmd("wincmd l")
-            end
-        end
-
-        if terminal.has() and not terminal.has() then
-            vim.o.splitright = true
-            tree.focus()
-            vim.cmd("vsplit")
-        end
-
-        empty.create()
-
-        if terminal.has() then
-            tree.focus()
-            vim.cmd("vertical resize " .. "50")
-        end
-    end
-end
-
 return {
     is = is,
     has = has,
     focus = focus,
-    ensure = ensure
+    hasHidden = hasHidden
 }

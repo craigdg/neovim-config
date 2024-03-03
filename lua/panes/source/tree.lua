@@ -28,6 +28,19 @@ local function has()
     return false
 end
 
+local function refresh()
+    local current = vim.api.nvim_get_current_buf()
+
+    if has() then
+        vim.cmd("NvimTreeClose")
+    end
+
+    vim.cmd("NvimTreeOpen")
+
+    if vim.api.nvim_buf_is_valid(current) then
+        vim.cmd("buffer " .. current)
+    end
+end
 
 local function create()
     vim.cmd("NvimTreeOpen")
@@ -37,10 +50,16 @@ local function hide()
     vim.cmd("NvimTreeClose")
 end
 
+local function toggle()
+    vim.cmd("NvimTreeToggle")
+end
+
 return {
     is = is,
     has = has,
     focus = focus,
     create = create,
-    hide = hide
+    hide = hide,
+    refresh = refresh,
+    toggle = toggle
 }

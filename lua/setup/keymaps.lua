@@ -12,6 +12,12 @@ end, {
     noremap = true
 })
 
+vim.keymap.set("n", "<Leader>k", function()
+    vim.cmd('FloatingTerminal')
+end, {
+    noremap = true
+})
+
 vim.keymap.set("n", "<Leader>g", function()
     vim.cmd('LazyGit')
 end, {
