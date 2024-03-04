@@ -12,7 +12,25 @@ end, {
     noremap = true
 })
 
+vim.keymap.set("n", "<Leader>o", function()
+    vim.cmd('ChatGPT')
+end, {
+    noremap = true
+})
+
+vim.keymap.set("t", "<Leader>o", function()
+    vim.cmd('ChatGPT')
+end, {
+    noremap = true
+})
+
 vim.keymap.set("n", "<Leader>k", function()
+    vim.cmd('FloatingTerminal')
+end, {
+    noremap = true
+})
+
+vim.keymap.set("t", "<Leader>k", function()
     vim.cmd('FloatingTerminal')
 end, {
     noremap = true
@@ -20,6 +38,18 @@ end, {
 
 vim.keymap.set("n", "<Leader>g", function()
     vim.cmd('LazyGit')
+end, {
+    noremap = true
+})
+
+vim.keymap.set("t", "<Leader>g", function()
+    vim.cmd('LazyGit')
+end, {
+    noremap = true
+})
+
+vim.keymap.set("t", "<Leader>b", function()
+    vim.cmd('Btop')
 end, {
     noremap = true
 })

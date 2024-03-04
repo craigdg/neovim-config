@@ -1,7 +1,7 @@
 vim.g.netrw_winsize = 30
 vim.g.netrw_banner = 0
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = '`'
+vim.g.maplocalleader = '`'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = false

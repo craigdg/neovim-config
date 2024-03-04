@@ -50,6 +50,14 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_user_command(
+    'ChatGPT',
+    function()
+        panes.chatgpt.create()
+    end,
+    { nargs = 0 }
+)
+
+vim.api.nvim_create_user_command(
     'LazyGit',
     function()
         panes.lazygit.create()

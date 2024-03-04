@@ -1,12 +1,12 @@
 local Terminal = require('toggleterm.terminal').Terminal
-local btop = Terminal:new({
-    cmd = "btop",
+local chatgpt = Terminal:new({
+    cmd = "chatgpt",
     direction = "float"
 })
 
 local function create()
     vim.defer_fn(function()
-        btop:toggle()
+        chatgpt:toggle()
     end, 0)
 end
 

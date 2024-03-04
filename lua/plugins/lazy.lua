@@ -30,8 +30,7 @@ lazy.setup({
             "nvim-tree/nvim-web-devicons"
         },
         opts = {
-            height = 20,
-            auto_jump = {}
+            position = "left"
         }
     },
     {

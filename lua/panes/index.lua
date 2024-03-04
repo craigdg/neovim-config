@@ -7,6 +7,7 @@ local tree = require('panes.source.tree')
 local lazygit = require('panes.source.lazygit')
 local btop = require('panes.source.btop')
 local floatingTerminal = require('panes.source.floatingTerminal')
+local chatgpt = require('panes.source.chatgpt')
 
 return {
     file = file,
@@ -17,5 +18,6 @@ return {
     tree = tree,
     lazygit = lazygit,
     btop = btop,
-    floatingTerminal = floatingTerminal
+    floatingTerminal = floatingTerminal,
+    chatgpt = chatgpt
 }
