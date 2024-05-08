@@ -115,7 +115,7 @@ end, {
 })
 
 vim.keymap.set("n", "<Leader>e", function()
-    vim.cmd "NvimTreeFocus"
+    vim.cmd "NvimTreeToggle"
 end, {
     noremap = true
 })
@@ -130,6 +130,10 @@ vim.keymap.set("t", "<Leader>e", function()
     vim.cmd "NvimTreeFocus"
 end, {
     noremap = true
+})
+
+vim.keymap.set('n', '<Leader>l', builtin.buffers, {
+    noremap = true,
 })
 
 vim.keymap.set('n', '<Leader>p', builtin.find_files, {

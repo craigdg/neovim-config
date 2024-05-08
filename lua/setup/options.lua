@@ -11,5 +11,6 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.wrap = false
-
-vim.api.nvim_set_option('scrolloff', 9999)
+vim.opt.ignorecase = true;
+vim.opt.smartcase = true;
+--vim.api.nvim_set_option('scrolloff', 9999)

@@ -3,9 +3,9 @@ local panes = require("panes.index")
 vim.api.nvim_create_user_command(
     'Setup',
     function()
-        panes.terminal.create()
-        panes.tree.create()
-        panes.tree.focus()
+        --panes.terminal.create()
+        --panes.tree.create()
+        --panes.tree.focus()
     end,
     { nargs = 0 }
 )

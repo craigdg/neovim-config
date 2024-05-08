@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.ts", "*.tsx", "*.js", "*.cjs", "*.lua", "*.toml", "*.go", "*.json" },
+    pattern = { "*.ts", "*.tsx", "*.js", "*.cjs", "*.lua", "*.toml", "*.go", "*.json", "*.go" },
     command = "LspZeroFormat"
 })
 

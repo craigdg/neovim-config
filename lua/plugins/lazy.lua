@@ -19,6 +19,13 @@ lazy.setup({
     "nvim-tree/nvim-tree.lua",
     "itspriddle/vim-shellcheck",
     'nvim-treesitter/nvim-treesitter',
+    {
+        'smoka7/hop.nvim',
+        version = "*",
+        opts = {
+            keys = 'etovxqpdygfblzhckisuran'
+        }
+    },
     "z0mbix/vim-shfmt",
     {
         'nvim-lualine/lualine.nvim',
@@ -32,6 +39,10 @@ lazy.setup({
         opts = {
             position = "left"
         }
+    },
+    {
+        'numToStr/Comment.nvim',
+        lazy = false,
     },
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -142,21 +153,6 @@ lazy.setup({
         'nvim-telescope/telescope.nvim',
         tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-    {
-        'romgrk/barbar.nvim',
-        dependencies = {
-            'lewis6991/gitsigns.nvim',
-            'nvim-tree/nvim-web-devicons',
-        },
-        init = function() vim.g.barbar_auto_setup = false end,
-        version = '^1.0.0',
-        opts = {
-            maximum_padding = 10,
-            minimum_padding = 10,
-            highlight_inactive_file_icons = true,
-            exclude_ft = { '' }
-        },
     },
     { 'akinsho/toggleterm.nvim', version = "*", config = true }
 })
