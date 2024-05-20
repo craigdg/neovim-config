@@ -1,10 +1,5 @@
 local panes = require("panes.index")
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    pattern = "*",
-    command = "Setup"
-})
-
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
     command = "EnsureEmpty"

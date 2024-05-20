@@ -1,7 +1,7 @@
 vim.g.netrw_winsize = 30
 vim.g.netrw_banner = 0
-vim.g.mapleader = '`'
-vim.g.maplocalleader = '`'
+vim.g.mapleader = '\\'
+vim.g.maplocalleader = '\\'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = false
@@ -13,4 +13,3 @@ vim.opt.expandtab = true
 vim.opt.wrap = false
 vim.opt.ignorecase = true;
 vim.opt.smartcase = true;
---vim.api.nvim_set_option('scrolloff', 9999)

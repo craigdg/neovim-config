@@ -1,16 +1,6 @@
 local builtin = require('telescope.builtin')
 
-vim.keymap.set("t", "<Leader>;", function()
-    vim.cmd('FocusFile')
-end, {
-    noremap = true
-})
-
-vim.keymap.set("n", "<Leader>;", function()
-    vim.cmd('FocusTerminal')
-end, {
-    noremap = true
-})
+-- Chat GPT (Personal only)
 
 vim.keymap.set("n", "<Leader>o", function()
     vim.cmd('ChatGPT')
@@ -24,6 +14,8 @@ end, {
     noremap = true
 })
 
+-- Generic floating terminal
+
 vim.keymap.set("n", "<Leader>k", function()
     vim.cmd('FloatingTerminal')
 end, {
@@ -35,6 +27,8 @@ vim.keymap.set("t", "<Leader>k", function()
 end, {
     noremap = true
 })
+
+-- LazyGit floating terminal
 
 vim.keymap.set("n", "<Leader>g", function()
     vim.cmd('LazyGit')
@@ -48,6 +42,8 @@ end, {
     noremap = true
 })
 
+-- Btop floating terminal
+
 vim.keymap.set("t", "<Leader>b", function()
     vim.cmd('Btop')
 end, {
@@ -59,6 +55,36 @@ vim.keymap.set("n", "<Leader>b", function()
 end, {
     noremap = true
 })
+
+-- Focus file
+
+vim.keymap.set("n", "<Leader>f", function()
+    vim.cmd('FocusFile')
+end, {
+    noremap = true
+})
+
+vim.keymap.set("t", "<Leader>f", function()
+    vim.cmd('FocusFile')
+end, {
+    noremap = true
+})
+
+-- Close quickfix
+
+vim.keymap.set("n", "<Leader>q", function()
+    vim.cmd('cclose')
+end, {
+    noremap = true
+})
+
+vim.keymap.set("t", "<Leader>q", function()
+    vim.cmd('cclose')
+end, {
+    noremap = true
+})
+
+-- New terminal
 
 vim.keymap.set('t', '<Leader>\'', function()
     vim.cmd "TerminalNew"
@@ -72,31 +98,43 @@ end, {
     noremap = true
 })
 
+-- Terminal toggle
+
 vim.keymap.set('t', '<Leader>/', function()
-    vim.cmd "ToggleTerm"
+    vim.cmd "TerminalToggle"
 end, {
     noremap = true
 })
 
 vim.keymap.set('n', '<Leader>/', function()
-    vim.cmd "ToggleTerm"
+    vim.cmd "TerminalToggle"
 end, {
     noremap = true
 })
 
-vim.keymap.set('t', '<Leader>#', function()
+-- Terminal select
+
+vim.keymap.set('t', '<Leader>;', function()
     vim.cmd "TermSelect"
 end, {
     noremap = true
 })
 
-vim.keymap.set('n', '<Leader>#', function()
+vim.keymap.set('n', '<Leader>;', function()
     vim.cmd "TermSelect"
 end, {
     noremap = true
 })
+
+-- Diagnostics toggle
 
 vim.keymap.set("n", "<Leader>d", function()
+    vim.cmd "DiagnosticsToggle"
+end, {
+    noremap = true
+})
+
+vim.keymap.set("t", "<Leader>d", function()
     vim.cmd "DiagnosticsToggle"
 end, {
     noremap = true
@@ -108,29 +146,21 @@ end, {
     noremap = true
 })
 
-vim.keymap.set("n", "<Leader>E", function()
-    vim.cmd "NvimTreeToggle"
-end, {
-    noremap = true
-})
+-- Nvim tree toggle
 
 vim.keymap.set("n", "<Leader>e", function()
-    vim.cmd "NvimTreeToggle"
-end, {
-    noremap = true
-})
-
-vim.keymap.set("t", "<Leader>E", function()
-    vim.cmd "NvimTreeToggle"
+    vim.cmd "NvimTreeOpen"
 end, {
     noremap = true
 })
 
 vim.keymap.set("t", "<Leader>e", function()
-    vim.cmd "NvimTreeFocus"
+    vim.cmd "NvimTreeOpen"
 end, {
     noremap = true
 })
+
+-- Telescope builtins
 
 vim.keymap.set('n', '<Leader>l', builtin.buffers, {
     noremap = true,
@@ -149,13 +179,5 @@ vim.keymap.set('n', '<Leader>S', builtin.grep_string, {
 })
 
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {
-    noremap = true,
-})
-
-vim.keymap.set('n', '<Leader>,', '<Cmd>BufferPrevious<CR>', {
-    noremap = true,
-})
-
-vim.keymap.set('n', '<Leader>.', '<Cmd>BufferNext<CR>', {
     noremap = true,
 })

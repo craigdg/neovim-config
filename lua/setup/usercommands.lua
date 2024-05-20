@@ -1,16 +1,6 @@
 local panes = require("panes.index")
 
 vim.api.nvim_create_user_command(
-    'Setup',
-    function()
-        --panes.terminal.create()
-        --panes.tree.create()
-        --panes.tree.focus()
-    end,
-    { nargs = 0 }
-)
-
-vim.api.nvim_create_user_command(
     'EnsureEmpty',
     function()
         if not panes.file.has() and not panes.empty.has() then
@@ -77,7 +67,6 @@ vim.api.nvim_create_user_command(
     'TerminalToggle',
     function()
         panes.terminal.toggle()
-        panes.tree.refresh()
     end,
     { nargs = 0 }
 )
@@ -102,10 +91,6 @@ vim.api.nvim_create_user_command(
     'FocusTerminal',
     function()
         panes.terminal.focus()
-
-        if panes.tree.has() then
-            panes.tree.refresh()
-        end
     end,
     { nargs = 0 }
 )
