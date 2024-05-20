@@ -11,12 +11,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.yaml", "*.yml", "*.graphql", "*.gql", "*.graphqls" },
+    pattern = { "*.ts", "*.tsx", "*.js", "*.cjs", "*.yaml", "*.yml", "*.graphql", "*.gql", "*.graphqls" },
     command = "Prettier"
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.ts", "*.tsx", "*.js", "*.cjs", "*.lua", "*.toml", "*.go", "*.json", "*.go" },
+    pattern = { "*.lua", "*.toml", "*.go", "*.json", "*.go" },
     command = "LspZeroFormat"
 })
 
