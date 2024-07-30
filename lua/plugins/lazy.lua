@@ -17,6 +17,7 @@ local lazy = require("lazy")
 
 lazy.setup({
     "nvim-tree/nvim-tree.lua",
+    'jparise/vim-graphql',
     "itspriddle/vim-shellcheck",
     'nvim-treesitter/nvim-treesitter',
     {
