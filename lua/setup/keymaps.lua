@@ -14,6 +14,15 @@ end, {
     noremap = true
 })
 
+-- Clear search
+
+vim.keymap.set("n", "<leader>z", function()
+    vim.cmd('nohlsearch')
+end, {
+    noremap = true,
+    silent = true
+})
+
 -- Generic floating terminal
 
 vim.keymap.set("n", "<Leader>k", function()

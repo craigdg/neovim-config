@@ -1,18 +1,47 @@
 local mason = require("mason")
-local mason_lsp_config = require("mason-lspconfig")
+local mason_lspconfig = require("mason-lspconfig")
 local lsp_zero = require('lsp-zero')
-local languages = { 'tsserver', 'eslint', 'lua_ls', 'bashls', 'gopls', 'taplo', 'jsonls', 'yamlls', 'graphql' }
+local lspconfig = require("lspconfig")
 
-mason.setup(languages)
+local languages = {
+    'ts_ls',
+    'eslint',
+    'lua_ls',
+    'bashls',
+    'gopls',
+    'taplo',
+    'jsonls',
+    'yamlls',
+    'graphql'
+}
 
-mason_lsp_config.setup({
+mason.setup()
+
+mason_lspconfig.setup({
     ensure_installed = languages,
-    handlers = {
-        lsp_zero.default_setup,
-        lua_ls = function()
-            require('lspconfig').lua_ls.setup({
-                settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
-            })
-        end,
-    }
+    automatic_installation = true,
 })
+
+lsp_zero.extend_lspconfig()
+
+lsp_zero.on_attach(function(_, bufnr)
+    lsp_zero.default_keymaps({ buffer = bufnr })
+end)
+
+lsp_zero.default_setup()
+
+for _, server in ipairs(languages) do
+    if server == "lua_ls" then
+        lspconfig.lua_ls.setup({
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { 'vim' },
+                    },
+                },
+            },
+        })
+    else
+        lspconfig[server].setup({})
+    end
+end

@@ -92,56 +92,9 @@ lazy.setup({
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             { 'hrsh7th/cmp-nvim-lsp' },
+            { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
         },
-        config = function()
-            local languages = { 'tsserver', 'eslint', 'lua_ls', 'bashls', 'gopls', 'taplo', 'jsonls', 'yamlls', 'graphql' }
-            local lsp_zero = require('lsp-zero')
-            local mason = require("mason")
-
-            lsp_zero.extend_lspconfig()
-            lsp_zero.on_attach(function(_, bufnr)
-                lsp_zero.default_keymaps({ buffer = bufnr })
-            end)
-
-            mason.setup(languages)
-
-            local lspconfig = require("lspconfig")
-
-            lspconfig.graphql.setup()
-
-            require('mason-lspconfig').setup({
-                ensure_installed = languages,
-                handlers = {
-                    lsp_zero.default_setup,
-                    lua_ls = function()
-                        require('lspconfig').lua_ls.setup({
-                            settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
-                        })
-                    end,
-                }
-            })
-        end
-    },
-    {
-        'neovim/nvim-lspconfig',
-        cmd = 'LspInfo',
-        event = { 'BufReadPre', 'BufNewFile' },
-        dependencies = {
-            { 'hrsh7th/cmp-nvim-lsp' },
-        },
-        config = function()
-            local lsp_zero = require('lsp-zero')
-            lsp_zero.extend_lspconfig()
-
-            lsp_zero.on_attach(function(client, bufnr)
-                lsp_zero.default_keymaps({ buffer = bufnr })
-            end)
-
-            -- (Optional) Configure lua language server for neovim
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
-        end
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
