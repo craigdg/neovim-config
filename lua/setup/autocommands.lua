@@ -1,5 +1,3 @@
-local panes = require("panes.index")
-
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
     command = "EnsureEmpty"
@@ -18,15 +16,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = { "*.lua", "*.toml", "*.go", "*.json", "*.go" },
     command = "LspZeroFormat"
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "*",
-    callback = function()
-        vim.defer_fn(function()
-            if panes.terminal.is(vim.fn.expand('%')) then
-                vim.cmd('startinsert')
-            end
-        end, 0)
-    end
 })
