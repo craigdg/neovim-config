@@ -1,7 +1,7 @@
 local utils = require('utils.index')
 
 local function is(buf)
-    if vim.api.nvim_buf_get_option(buf, 'filetype') == "Trouble" then
+    if vim.api.nvim_buf_get_option(buf, 'filetype') == "trouble" then
         return true
     else
         return false
@@ -20,10 +20,9 @@ end
 
 local function toggle()
     if has() then
-        vim.cmd "TroubleClose"
+        vim.cmd "Trouble diagnostics close"
     else
-        vim.cmd "Trouble document_diagnostics"
-        vim.cmd("setlocal wrap")
+        vim.cmd "Trouble diagnostics open focus"
     end
 end
 
