@@ -1,12 +1,11 @@
 local utils = require('utils.index')
-local terminal = require('panes.source.terminal')
 local root = require('panes.source.root')
 local diagnostic = require('panes.source.diagnostic')
 local tree = require('panes.source.tree')
 local empty = require('panes.source.empty')
 
 local function is(buf)
-    if (terminal.is(buf) or tree.is(buf) or empty.is(buf) or diagnostic.is(buf) or root.is(buf)) then
+    if (tree.is(buf) or empty.is(buf) or diagnostic.is(buf) or root.is(buf)) then
         return false
     else
         return true
@@ -34,8 +33,13 @@ local function hasHidden()
 end
 
 local function focus()
+    local current_buf = vim.api.nvim_get_current_buf()
+    local current_buf_name = vim.api.nvim_buf_get_name(current_buf)
+
     for _, buf in pairs(utils.buffer.getVisibleWindows()) do
-        if is(buf) or empty.is(buf) then
+        local buf_name = vim.api.nvim_buf_get_name(buf);
+
+        if (is(buf) or empty.is(buf)) and not (current_buf_name == buf_name) then
             vim.api.nvim_set_current_win(utils.buffer.getWindowId(buf))
             break
         end
