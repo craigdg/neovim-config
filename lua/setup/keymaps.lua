@@ -14,6 +14,20 @@ end, {
     noremap = true
 })
 
+-- Previous file
+
+vim.keymap.set("n", "<leader>,", function()
+    vim.cmd('bp')
+end, {
+    noremap = true,
+})
+
+vim.keymap.set("n", "<leader>.", function()
+    vim.cmd('bn')
+end, {
+    noremap = true,
+})
+
 -- Clear search
 
 vim.keymap.set("n", "<leader>z", function()
@@ -21,6 +35,14 @@ vim.keymap.set("n", "<leader>z", function()
 end, {
     noremap = true,
     silent = true
+})
+
+-- Split window
+
+vim.keymap.set("n", "<Leader>v", function()
+    vim.cmd('Split')
+end, {
+    noremap = true
 })
 
 -- Generic floating terminal
